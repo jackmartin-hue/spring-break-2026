@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack & John's Spring Break 2026 — Italia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --terracotta: #c4622d;
+    --ochre: #d4a843;
+    --deep-green: #2a4a3e;
+    --rust: #8b3a1a;
+    --warm-black: #1a1410;
+    --sand: #e8d5b0;
+    --sky: #7ba7bc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    background: var(--warm-black);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(196,98,45,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(42,74,62,0.4) 0%, transparent 55%);
+  }
+
+  .hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 24px;
+    position: relative;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 0.9;
+    position: relative;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.4s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--sand);
+    margin-top: 20px;
+    position: relative;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.6s;
+  }
+
+  .hero-route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    position: relative;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.8s;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .route-city {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+  }
+
+  .route-line { width: 32px; height: 1px; background: var(--ochre); }
+  .route-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ochre); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(245,240,232,0.35);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--warm-black);
+    border-bottom: 1px solid rgba(196,98,45,0.3);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--cream);
+    font-size: 1.1rem;
+  }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ochre); }
+
+  section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    color: var(--warm-black);
+  }
+
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--terracotta), transparent);
+    margin: 0;
+  }
+
+  /* FLIGHTS */
+  .flight-card {
+    background: var(--warm-black);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .flight-city {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    font-weight: 700;
+  }
+
+  .flight-code { font-size: 0.65rem; letter-spacing: 0.2em; color: rgba(245,240,232,0.35); text-transform: uppercase; margin-top: 2px; }
+  .flight-time { font-size: 0.82rem; color: var(--ochre); margin-top: 6px; }
+
+  .flight-arrow { text-align: center; }
+  .flight-number { text-align: center; font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(245,240,232,0.3); margin-top: 6px; text-transform: uppercase; }
+  .flight-right { text-align: right; }
+
+  .flight-tracker-links {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(245,240,232,0.07);
+    flex-wrap: wrap;
+  }
+
+  .tracker-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: opacity 0.15s, transform 0.15s;
+    cursor: pointer;
+  }
+
+  .tracker-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+
+  .tracker-btn-fa {
+    background: rgba(245,165,50,0.15);
+    color: #f5a532;
+    border: 1px solid rgba(245,165,50,0.25);
+  }
+
+  .tracker-btn-gf {
+    background: rgba(66,133,244,0.12);
+    color: #7aabf5;
+    border: 1px solid rgba(66,133,244,0.2);
+  }
+
+  .tracker-label {
+    font-size: 0.6rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    align-self: center;
+  }
+
+  /* ITINERARY */
+  .day-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(26,20,16,0.1);
+    padding: 28px 0;
+  }
+
+  .day-card:last-child { border-bottom: 1px solid rgba(26,20,16,0.1); }
+
+  .day-date {
+    padding-right: 28px;
+    border-right: 1px solid rgba(196,98,45,0.25);
+    padding-top: 4px;
+  }
+
+  .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+
+  .day-month { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,20,16,0.4); margin-top: 2px; }
+  .day-day { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,20,16,0.4); margin-top: 3px; }
+
+  .day-content { padding-left: 28px; }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .day-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(26,20,16,0.68);
+    margin-bottom: 12px;
+  }
+
+  .day-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 20px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .tag-food { background: rgba(196,98,45,0.12); color: var(--rust); }
+  .tag-culture { background: rgba(42,74,62,0.12); color: var(--deep-green); }
+  .tag-nature { background: rgba(123,167,188,0.18); color: #4a7a8f; }
+  .tag-travel { background: rgba(212,168,67,0.14); color: #8a6a1a; }
+  .tag-relax { background: rgba(139,58,26,0.1); color: var(--rust); }
+
+  .day-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(26,20,16,0.08);
+  }
+
+  .day-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 13px;
+    border-radius: 5px;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: opacity 0.15s, transform 0.15s;
+    border: 1px solid;
+  }
+
+  .day-link-btn:hover { opacity: 0.75; transform: translateY(-1px); }
+
+  .day-link-lodge {
+    background: rgba(42,74,62,0.08);
+    color: var(--deep-green);
+    border-color: rgba(42,74,62,0.2);
+  }
+
+  .day-link-travel {
+    background: rgba(212,168,67,0.1);
+    color: #7a5f10;
+    border-color: rgba(212,168,67,0.25);
+  }
+
+  .day-link-book {
+    background: rgba(196,98,45,0.09);
+    color: var(--rust);
+    border-color: rgba(196,98,45,0.22);
+  }
+  .food-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+  .food-city-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .food-city-name { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-style: italic; white-space: nowrap; }
+  .food-city-line { flex: 1; height: 1px; background: rgba(196,98,45,0.25); }
+
+  .food-item { padding: 14px 0; border-bottom: 1px solid rgba(26,20,16,0.07); }
+  .food-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 3px; }
+  .food-type { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); }
+  .food-note { font-size: 0.8rem; color: rgba(26,20,16,0.58); margin-top: 4px; font-style: italic; line-height: 1.5; }
+
+  /* LODGING */
+  .lodging-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .lodge-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(26,20,16,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .lodge-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,20,16,0.1); }
+
+  .lodge-header { background: var(--deep-green); padding: 18px 22px; }
+  .lodge-city { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,240,232,0.45); margin-bottom: 4px; }
+  .lodge-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cream); font-weight: 700; }
+  .lodge-type { font-size: 0.65rem; color: rgba(245,240,232,0.55); margin-top: 3px; font-style: italic; }
+
+  .lodge-body { padding: 18px 22px; }
+  .lodge-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--terracotta); font-weight: 700; margin-bottom: 10px; }
+  .lodge-price span { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 300; color: rgba(26,20,16,0.45); }
+
+  .lodge-features { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .lodge-features li { font-size: 0.78rem; color: rgba(26,20,16,0.62); display: flex; align-items: center; gap: 7px; }
+  .lodge-features li::before { content: '—'; color: var(--ochre); font-size: 0.68rem; }
+
+  .lodge-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(26,20,16,0.06); font-size: 0.73rem; color: rgba(26,20,16,0.45); font-style: italic; line-height: 1.5; }
+
+  /* TIPS */
+  .tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  .tip-card {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 8px;
+    padding: 26px;
+    transition: border-color 0.2s;
+  }
+
+  .tip-card:hover { border-color: rgba(196,98,45,0.35); }
+  .tip-icon { font-size: 1.4rem; margin-bottom: 10px; }
+  .tip-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 10px; color: var(--cream); }
+  .tip-text { font-size: 0.83rem; line-height: 1.72; color: rgba(245,240,232,0.52); }
+
+  footer {
+    background: var(--warm-black);
+    border-top: 1px solid rgba(245,240,232,0.05);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand { font-family: 'Playfair Display', serif; font-style: italic; color: rgba(245,240,232,0.28); font-size: 1rem; }
+  .footer-note { font-size: 0.68rem; color: rgba(245,240,232,0.18); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    section { padding: 56px 20px; }
+    .food-columns, .lodging-grid, .tips-grid { grid-template-columns: 1fr; }
+    .flight-card { grid-template-columns: 1fr; text-align: center; }
+    .flight-right { text-align: center; }
+    .day-card { grid-template-columns: 72px 1fr; }
+    footer { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-subtitle">Jack & John's Spring Break 2026</div>
+  <h1>Bella<br><em>Italia</em></h1>
+  <div class="hero-dates">March 15 – 24, 2025</div>
+  <div class="hero-route">
+    <span class="route-city">Boston</span>
+    <div class="route-line"></div><div class="route-dot"></div><div class="route-line"></div>
+    <span class="route-city">Rome</span>
+    <div class="route-line"></div><div class="route-dot"></div><div class="route-line"></div>
+    <span class="route-city">Naples</span>
+    <div class="route-line"></div><div class="route-dot"></div><div class="route-line"></div>
+    <span class="route-city">Amalfi</span>
+    <div class="route-line"></div><div class="route-dot"></div><div class="route-line"></div>
+    <span class="route-city">Amsterdam</span>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 3v10M8 13l-4-4M8 13l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Italia '25</div>
+  <ul class="nav-links">
+    <li><a href="#flights">Flights</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#food">Food</a></li>
+    <li><a href="#lodging">Stay</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+</nav>
+
+<!-- FLIGHTS -->
+<section id="flights">
+  <div class="section-label">Getting There & Back</div>
+  <h2 class="section-title">Flights</h2>
+
+  <div class="flight-card animate-on-scroll" style="flex-wrap: wrap;">
+    <div>
+      <div class="flight-city">Boston</div>
+      <div class="flight-code">BOS — Logan International</div>
+      <div class="flight-time">Sun, Mar 15 · 6:40 PM</div>
+    </div>
+    <div class="flight-arrow">
+      <svg width="44" height="20" viewBox="0 0 44 20" fill="none">
+        <path d="M2 10h40M32 3l10 7-10 7" stroke="#c4622d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="flight-number">Delta 112 · ~8 hrs</div>
+    </div>
+    <div class="flight-right">
+      <div class="flight-city">Rome</div>
+      <div class="flight-code">FCO — Fiumicino</div>
+      <div class="flight-time">Mon, Mar 16 · 7:40 AM</div>
+    </div>
+    <div class="flight-tracker-links">
+      <a class="tracker-btn tracker-btn-fa" href="https://flightaware.com/live/flight/DAL112" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        FlightAware
+      </a>
+      <a class="tracker-btn tracker-btn-gf" href="https://www.google.com/travel/flights/search?q=Delta+112+flight+status" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Google Flights
+      </a>
+      <span class="tracker-label">Delta 112 · BOS → FCO · Mar 15</span>
+    </div>
+  </div>
+
+  <div class="flight-card animate-on-scroll" style="flex-wrap: wrap;">
+    <div>
+      <div class="flight-city">Naples</div>
+      <div class="flight-code">NAP — Capodichino</div>
+      <div class="flight-time">Tue, Mar 24 · 6:00 AM</div>
+    </div>
+    <div class="flight-arrow">
+      <svg width="44" height="20" viewBox="0 0 44 20" fill="none">
+        <path d="M2 10h40M32 3l10 7-10 7" stroke="#c4622d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="flight-number">EasyJet · ~2h50m</div>
+    </div>
+    <div class="flight-right">
+      <div class="flight-city">Amsterdam</div>
+      <div class="flight-code">AMS → BOS · 1:40 PM</div>
+      <div class="flight-time">Tue, Mar 24 · 8:50 AM arrive</div>
+    </div>
+    <div class="flight-tracker-links">
+      <a class="tracker-btn tracker-btn-fa" href="https://flightaware.com/live/flight/EJU4231" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        FlightAware
+      </a>
+      <a class="tracker-btn tracker-btn-gf" href="https://www.google.com/travel/flights/search?q=EJU4231+flight+status" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Google Flights
+      </a>
+      <span class="tracker-label">EJU4231 · NAP → AMS · Mar 24</span>
+    </div>
+  </div>
+
+  <div class="flight-card animate-on-scroll" style="flex-wrap: wrap;">
+    <div>
+      <div class="flight-city">Amsterdam</div>
+      <div class="flight-code">AMS — Schiphol</div>
+      <div class="flight-time">Tue, Mar 24 · 1:40 PM</div>
+    </div>
+    <div class="flight-arrow">
+      <svg width="44" height="20" viewBox="0 0 44 20" fill="none">
+        <path d="M2 10h40M32 3l10 7-10 7" stroke="#c4622d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="flight-number">Booking ref: EQZYWP</div>
+    </div>
+    <div class="flight-right">
+      <div class="flight-city">Boston</div>
+      <div class="flight-code">BOS — Logan International</div>
+      <div class="flight-time">Tue, Mar 24 · Evening</div>
+    </div>
+    <div class="flight-tracker-links">
+      <a class="tracker-btn tracker-btn-fa" href="https://flightaware.com/live/flight" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        FlightAware
+      </a>
+      <a class="tracker-btn tracker-btn-gf" href="https://www.google.com/travel/flights/search?q=AMS+to+BOS+March+24+flight+status" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Google Flights
+      </a>
+      <span class="tracker-label">Ref: EQZYWP · AMS → BOS · Mar 24 — share your airline + flight # for a direct tracker link</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ITINERARY -->
+<section id="itinerary">
+  <div class="section-label">Day by Day</div>
+  <h2 class="section-title">The Itinerary</h2>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">15</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Sunday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Departure Day ✈️</div>
+      <div class="day-desc">Head to Logan early. Delta 112 departs at 6:40 PM — aim to be there by 4 PM. Overnight flight to Rome. Sleep on the plane.</div>
+      <div class="day-tags"><span class="tag tag-travel">Departure</span></div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">16</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Monday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Arrival in Rome</div>
+      <div class="day-desc">Land at 7:40 AM at Fiumicino. Take the Leonardo Express train to Roma Termini (~30 min, €14). Check into hostel, rest, then wander. Trastevere is perfect for a first-evening stroll — cobblestones, ivy-draped buildings, and aperitivo spots everywhere.</div>
+      <div class="day-tags">
+        <span class="tag tag-travel">Arrival</span>
+        <span class="tag tag-culture">Trastevere</span>
+        <span class="tag tag-food">First Espresso</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-lodge" href="https://www.hostelworld.com/hosteldetails.php/The-Yellow/Rome/1328" target="_blank" rel="noopener">🛏 The Yellow Hostel</a>
+        <a class="day-link-lodge" href="https://staygenerator.com/hostels/rome" target="_blank" rel="noopener">🛏 Generator Rome</a>
+        <a class="day-link-travel" href="https://www.trenitalia.com" target="_blank" rel="noopener">🚆 Leonardo Express (FCO→Termini)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">17</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Tuesday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Rome — Ancient City</div>
+      <div class="day-desc">Morning: Colosseum, Roman Forum, and Palatine Hill — buy one combined ticket online in advance. Afternoon: walk to the Pantheon (free entry), Piazza Navona, Campo de' Fiori. Grab a slice from Roscioli or Forno. Dinner at Armando al Pantheon (book ahead!) or Al Pompieri in the Jewish Ghetto.</div>
+      <div class="day-tags">
+        <span class="tag tag-culture">Colosseum & Forum</span>
+        <span class="tag tag-culture">Pantheon</span>
+        <span class="tag tag-food">Armando al Pantheon</span>
+        <span class="tag tag-food">Al Pompieri</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-book" href="https://www.coopculture.it/en/colosseo-e-shop.cfm" target="_blank" rel="noopener">🎟 Book Colosseum Tickets</a>
+        <a class="day-link-book" href="https://www.opentable.com/armando-al-pantheon" target="_blank" rel="noopener">🍽 Reserve Armando al Pantheon</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">18</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Wednesday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Rome → Naples</div>
+      <div class="day-desc">Morning: breakfast at Forno in Campo de' Fiori — pizza bianca is Rome's version of toast. Book a Frecciarossa or Italo high-speed train to Naples (~70 min, ~€20–35 if booked early). Arrive in Naples, drop bags, and immediately start eating. The Naples Underground tour is a great evening activity.</div>
+      <div class="day-tags">
+        <span class="tag tag-travel">Rome → Naples</span>
+        <span class="tag tag-food">Forno Campo de' Fiori</span>
+        <span class="tag tag-culture">Naples Underground</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-travel" href="https://www.trenitalia.com" target="_blank" rel="noopener">🚆 Book Rome→Naples Train</a>
+        <a class="day-link-travel" href="https://www.italotreno.it/en" target="_blank" rel="noopener">🚆 Italo Trains (alternative)</a>
+        <a class="day-link-lodge" href="https://www.hostelworld.com/hosteldetails.php/Spaccanapoli-Hostel/Naples/94870" target="_blank" rel="noopener">🛏 Spaccanapoli Hostel</a>
+        <a class="day-link-book" href="https://www.napolisotterranea.org" target="_blank" rel="noopener">🎟 Book Naples Underground</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">19</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Thursday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Pompeii + Pizza</div>
+      <div class="day-desc">Circumvesuviana train from Naples Centrale to Pompeii Scavi (~40 min, €3 each way). Budget 3–4 hours in the ruins. Back in Naples for the essential Da Michele experience — cash only, two choices only, total perfection. Try Cossentina de Tre Santi for a second opinion on the city's pizza debate.</div>
+      <div class="day-tags">
+        <span class="tag tag-culture">Pompeii Ruins</span>
+        <span class="tag tag-food">Da Michele</span>
+        <span class="tag tag-food">Cossentina de Tre Santi</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-book" href="https://ticketing.pompeiisites.org" target="_blank" rel="noopener">🎟 Book Pompeii Tickets</a>
+        <a class="day-link-travel" href="https://www.eavsrl.it/web/en" target="_blank" rel="noopener">🚆 Circumvesuviana Train Info</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">20</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Friday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Amalfi Coast Arrival</div>
+      <div class="day-desc">Morning: Culinary Backstreets tour in Naples — one of the best food experiences in Italy, book ahead at culinarybackstreets.com. Afternoon: SITA bus or ferry to your Amalfi Coast base. Positano is stunning; Amalfi is historic; Salerno is the budget-smart choice with ferries to both. Settle in, find a terrace, eat well.</div>
+      <div class="day-tags">
+        <span class="tag tag-food">Culinary Backstreets Tour</span>
+        <span class="tag tag-travel">To Amalfi Coast</span>
+        <span class="tag tag-nature">Coastal Views</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-book" href="https://culinarybackstreets.com/cities-category/naples/" target="_blank" rel="noopener">🍽 Book Culinary Backstreets Tour</a>
+        <a class="day-link-travel" href="https://www.ferriesinthemed.com/naples-amalfi-coast" target="_blank" rel="noopener">⛴ Naples→Amalfi Ferry Info</a>
+        <a class="day-link-lodge" href="https://www.hostelworld.com/hosteldetails.php/Brikette/Positano/5319" target="_blank" rel="noopener">🛏 Hostel Brikette (Positano)</a>
+        <a class="day-link-lodge" href="https://www.booking.com/searchresults.html?ss=Salerno+Italy" target="_blank" rel="noopener">🛏 Salerno Budget Hotels</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">21</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Saturday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Beach or Capri</div>
+      <div class="day-desc">Option A: Literally just chill on the beach — swim, sunbathe, eat fresh seafood, do nothing. Option B: Ferry to Capri. Hike up to Anacapri, visit the Blue Grotto (€14 boat entry), eat a lemon granita, and take the chairlift up Monte Solaro for 360° views. Ferries run from Positano and Amalfi.</div>
+      <div class="day-tags">
+        <span class="tag tag-relax">Beach Day</span>
+        <span class="tag tag-nature">Capri Day Trip</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-travel" href="https://www.capritourism.com/en/getting-to-capri" target="_blank" rel="noopener">⛴ Ferries to Capri</a>
+        <a class="day-link-book" href="https://www.grottazzurra.com" target="_blank" rel="noopener">🎟 Blue Grotto Info</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">22</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Sunday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Hike or Slow Day</div>
+      <div class="day-desc">Option A: Hike the Path of the Gods (Sentiero degli Dei) — 7.8km trail from Agerola to Nocelle with jaw-dropping views of the coast. One of Italy's great walks. Option B: Complete decompression. Explore a local church, sip Limoncello, eat too much pasta, read on a terrace. Both are valid.</div>
+      <div class="day-tags">
+        <span class="tag tag-nature">Path of the Gods</span>
+        <span class="tag tag-relax">Slow Day</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-travel" href="https://www.alltrails.com/trail/italy/campania/sentiero-degli-dei--2" target="_blank" rel="noopener">🥾 Path of the Gods on AllTrails</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">23</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Monday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Return to Naples</div>
+      <div class="day-desc">Head back to Naples by afternoon — you need to be rested for an extremely early morning. Last dinner on Spaccanapoli, the ancient street that splits the city. Pack bags, confirm your alarm, then set three more. Your EasyJet departs at 6:00 AM, meaning a 4:00 AM wake-up.</div>
+      <div class="day-tags">
+        <span class="tag tag-travel">Return to Naples</span>
+        <span class="tag tag-culture">Spaccanapoli</span>
+        <span class="tag tag-food">Da Michele Vincenzo</span>
+      </div>
+      <div class="day-links">
+        <a class="day-link-lodge" href="https://www.booking.com/searchresults.html?ss=Naples+Centrale+Italy" target="_blank" rel="noopener">🛏 Hotels near Naples Centrale</a>
+        <a class="day-link-travel" href="https://www.alilauro.it/en" target="_blank" rel="noopener">⛴ Amalfi→Naples Ferry</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card animate-on-scroll">
+    <div class="day-date">
+      <div class="day-num">24</div>
+      <div class="day-month">March</div>
+      <div class="day-day">Tuesday</div>
+    </div>
+    <div class="day-content">
+      <div class="day-title">Fly Home via Amsterdam ✈️</div>
+      <div class="day-desc">EasyJet NAP → AMS departs 6:00 AM, arrives 8:50 AM. Connecting flight from Amsterdam departs 1:40 PM back to Boston. You'll be home tonight with tired legs, a full heart, and pasta in your soul.</div>
+      <div class="day-tags"><span class="tag tag-travel">NAP → AMS → BOS</span></div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider">
+
+<!-- FOOD -->
+<section id="food" style="background: #efe9da; max-width: 100%; padding: 80px 0;">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 40px;">
+  <div class="section-label">Where to Eat</div>
+  <h2 class="section-title">The Food List</h2>
+
+  <div class="food-columns">
+    <div class="animate-on-scroll">
+      <div class="food-city-header">
+        <div class="food-city-name">Naples</div>
+        <div class="food-city-line"></div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-name">Da Michele</div>
+        <div class="food-type">Pizza — The Pilgrimage</div>
+        <div class="food-note">Founded 1870. Cash only. Two pizzas: marinara or margherita. No reservations. Arrive early. Everything else is noise.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Cossentina de Tre Santi</div>
+        <div class="food-type">Pizza — Local Favorite</div>
+        <div class="food-note">Beloved neighborhood spot, less tourist traffic than Da Michele. Perfect for a comparison round.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Culinary Backstreets Tour</div>
+        <div class="food-type">Food Tour — Book Ahead</div>
+        <div class="food-note">The best way to eat Naples. Guided deep-dive into street food, markets, and hidden spots. Book at culinarybackstreets.com — it sells out.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Naples Underground Tour</div>
+        <div class="food-type">Culture + History</div>
+        <div class="food-note">Ancient tunnels beneath the city — fascinating and eerie. A must-do. Book via napolisotterranea.org.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Spaccanapoli Street Food</div>
+        <div class="food-type">Budget Eats — Anywhere</div>
+        <div class="food-note">Walk and eat. Fried pizza, cuoppo (fried snacks), sfogliatelle pastry. Pizza slices from €2. You can't make a bad choice here.</div>
+      </div>
+    </div>
+
+    <div class="animate-on-scroll">
+      <div class="food-city-header">
+        <div class="food-city-name">Rome</div>
+        <div class="food-city-line"></div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-name">Armando al Pantheon</div>
+        <div class="food-type">Trattoria — Book Ahead</div>
+        <div class="food-note">Family-run since 1961. Steps from the Pantheon. Order cacio e pepe or amatriciana. Reserve in advance — it's always full.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Al Pompieri</div>
+        <div class="food-type">Trattoria — Jewish Ghetto</div>
+        <div class="food-note">Inside a historic palazzo. Roman-Jewish classics including carciofi alla giudia (fried artichokes). Very local, very good.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">E' passata la moretta</div>
+        <div class="food-type">Daily Menu — Seasonal</div>
+        <div class="food-note">Family-run, market-driven, changes daily. Eat whatever they're making — it will be exactly right.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Roscioli Pizza</div>
+        <div class="food-type">Pizza al Taglio — Grab & Go</div>
+        <div class="food-note">World-class Roman-style pizza by the slice. Great for lunch between sightseeing. Fast, cheap, excellent.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Forno in Campo de' Fiori</div>
+        <div class="food-type">Bakery — Breakfast Slices</div>
+        <div class="food-note">Right on the market square. Pizza bianca in the morning — this is what Romans eat for breakfast. Unmissable.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Cul de Sac</div>
+        <div class="food-type">Wine Bar — Natural Wines</div>
+        <div class="food-note">One of Rome's oldest wine bars, near Piazza Navona. Hundreds of bottles, great charcuterie and cheese. Perfect aperitivo stop.</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">Da Michele Vincenzo (Rome)</div>
+        <div class="food-type">Pizza — Naples Import</div>
+        <div class="food-note">The Naples Da Michele family's Rome outpost. Get your fix here if you need a final pizza before heading home.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- LODGING -->
+<section id="lodging">
+  <div class="section-label">Where to Sleep</div>
+  <h2 class="section-title">Affordable Lodging</h2>
+  <p style="font-size: 0.88rem; color: rgba(26,20,16,0.58); margin-bottom: 36px; max-width: 560px; line-height: 1.75;">Budget picks for two college students — reputable, centrally located, and well-reviewed. Prices are estimated per person/night when sharing a room.</p>
+
+  <div class="lodging-grid">
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header">
+        <div class="lodge-city">Rome — Top Pick</div>
+        <div class="lodge-name">The Yellow Hostel</div>
+        <div class="lodge-type">Hostel · Social & Central</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€30–45 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>Steps from Roma Termini station</li>
+          <li>Rooftop bar and social events nightly</li>
+          <li>Private rooms available</li>
+          <li>Free Wi-Fi, luggage storage</li>
+        </ul>
+        <div class="lodge-note">One of Rome's most beloved budget spots. Book well ahead — spring break fills it fast.</div>
+      </div>
+    </div>
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header" style="background: #5a3520;">
+        <div class="lodge-city">Rome — Alternative</div>
+        <div class="lodge-name">Generator Rome</div>
+        <div class="lodge-type">Design Hostel · Stylish</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€35–55 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>Near Termini station</li>
+          <li>Modern, boutique-hotel feel</li>
+          <li>Bar and café on-site</li>
+          <li>Mix of dorm and private rooms</li>
+        </ul>
+        <div class="lodge-note">Pricier but very comfortable. Good pick if you want style without the full hotel bill.</div>
+      </div>
+    </div>
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header" style="background: #3a2818;">
+        <div class="lodge-city">Naples</div>
+        <div class="lodge-name">Spaccanapoli Hostel</div>
+        <div class="lodge-type">Hostel · Old City Center</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€20–35 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>On the iconic Spaccanapoli street</li>
+          <li>Walking distance to Da Michele & sights</li>
+          <li>Very local neighborhood feel</li>
+          <li>Naples is one of Italy's cheapest cities</li>
+        </ul>
+        <div class="lodge-note">Also check out "Hostel of the Sun" and "6 Small Rooms" — all excellent budget options in Naples.</div>
+      </div>
+    </div>
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header" style="background: var(--deep-green);">
+        <div class="lodge-city">Amalfi Coast — Top Pick</div>
+        <div class="lodge-name">Hostel Brikette</div>
+        <div class="lodge-type">Hostel · Positano · Sea Views</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€35–55 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>Terrace with stunning Mediterranean views</li>
+          <li>Backpacker-friendly atmosphere</li>
+          <li>30-min walk or bus to Positano town</li>
+          <li>Sometimes includes breakfast</li>
+        </ul>
+        <div class="lodge-note">The Amalfi Coast is expensive — budget options are rare. Book this immediately, it's the best value on the cliff.</div>
+      </div>
+    </div>
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header" style="background: #3a4a2a;">
+        <div class="lodge-city">Amalfi Coast — Smart Alternative</div>
+        <div class="lodge-name">Base in Salerno</div>
+        <div class="lodge-type">City Base · Budget-First</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€20–30 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>Far cheaper than Positano or Amalfi</li>
+          <li>Daily ferries to Positano & Amalfi</li>
+          <li>Authentic local city — not touristy</li>
+          <li>Great food at half the price</li>
+        </ul>
+        <div class="lodge-note">The local secret: stay in Salerno, day-trip the coast. Saves €30–50/night. Look at "Ostello Ave Gratia Plena."</div>
+      </div>
+    </div>
+
+    <div class="lodge-card animate-on-scroll">
+      <div class="lodge-header" style="background: #2a2a3a;">
+        <div class="lodge-city">Final Night — Naples</div>
+        <div class="lodge-name">Near Naples Centrale</div>
+        <div class="lodge-type">Practical · Early Flight</div>
+      </div>
+      <div class="lodge-body">
+        <div class="lodge-price">~€20–35 <span>/ person / night</span></div>
+        <ul class="lodge-features">
+          <li>Stay near Piazza Garibaldi / Termini</li>
+          <li>Taxi to airport takes ~15 min</li>
+          <li>Taxi costs ~€15–20 at 4 AM</li>
+          <li>Many budget B&Bs in this area</li>
+        </ul>
+        <div class="lodge-note">6 AM EasyJet = 4 AM wake-up. Stay close to the airport side of Naples. Set multiple alarms. Seriously.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TIPS -->
+<section id="tips" style="background: var(--warm-black); max-width: 100%; padding: 80px 0;">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 40px;">
+  <div class="section-label" style="color: var(--ochre);">Practical Advice</div>
+  <h2 class="section-title" style="color: var(--cream);">Traveler's Tips</h2>
+
+  <div class="tips-grid">
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">💶</div>
+      <div class="tip-title">Money & Budget</div>
+      <div class="tip-text">Budget ~€50–70/day for food and incidentals. Italy is affordable if you avoid tourist-trap restaurants. Many smaller spots are cash-only, especially in Naples. Bring a Wise or Charles Schwab card for fee-free ATM withdrawals. Don't use airport currency exchange booths.</div>
+    </div>
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">🚆</div>
+      <div class="tip-title">Getting Around</div>
+      <div class="tip-text">High-speed trains between Rome and Naples take 70 minutes — book online at trenitalia.com or italotreno.it at least a few days ahead for €20–35 fares. Circumvesuviana to Pompeii costs ~€3. Amalfi Coast: take SITA buses or ferries between towns — both cheap, both scenic, both crowded in peak season.</div>
+    </div>
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">🏛️</div>
+      <div class="tip-title">Book Attractions Early</div>
+      <div class="tip-text">The Colosseum requires timed-entry tickets — book 2–3 weeks ahead at coopculture.it. Same for the Vatican Museums. Pompeii is more walk-up friendly. Naples Underground can be booked at napolisotterranea.org. Pre-booking = skipping massive lines = more pizza time.</div>
+    </div>
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">🍝</div>
+      <div class="tip-title">Eating on a Budget</div>
+      <div class="tip-text">Sit-down lunch menus (menù del giorno) offer 2 courses + wine for €12–15. Aperitivo hour (6–8 PM) often includes free snacks with a drink. Espresso at the bar is €1–1.50 — never order it sitting down at a tourist café. Avoid any restaurant with photos on the menu near a major landmark.</div>
+    </div>
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">📱</div>
+      <div class="tip-title">Staying Connected</div>
+      <div class="tip-text">Get a local Italian SIM at the airport (Tim, Vodafone IT, or Iliad) for ~€15–20 with plenty of data. Download Google Maps offline for Rome and Naples before you go. Citymapper works well in Rome. WhatsApp for communication — it's what everyone in Europe uses.</div>
+    </div>
+
+    <div class="tip-card animate-on-scroll">
+      <div class="tip-icon">⚠️</div>
+      <div class="tip-title">Watch Out For</div>
+      <div class="tip-text">Pickpockets on the Rome Metro Line A near Termini and the Vatican. Cover shoulders and knees for entering churches. Amalfi Coast buses fill up — board early. The sit-down surcharge at cafés is real (espresso at the bar: €1.50; at a table: €4). And set four alarms for your 4 AM Naples wake-up. Not joking.</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-brand">Bella Italia '25</div>
+  <div class="footer-note">Built for Jack & John's Spring Break · March 15–24, 2026</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), (i % 3) * 80);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
