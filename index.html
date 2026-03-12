@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jack & John's Spring Break 2026 — Italia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <style>
   :root {
     --cream: #f5f0e8;
@@ -374,6 +375,22 @@
   }
   .food-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 
+  /* MAP */
+  #map-section { background: var(--warm-black); padding: 70px 0 0; }
+  #map-section .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  #map-section .section-label { color: var(--ochre); }
+  #map-section .section-title { color: var(--cream); margin-bottom: 28px; }
+  #trip-map { width: 100%; height: 480px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(245,240,232,0.08); }
+  .map-legend { display: flex; flex-wrap: wrap; gap: 16px; padding: 20px 0 40px; }
+  .map-legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.45); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .leaflet-popup-content-wrapper { background: #1a1410 !important; border: 1px solid rgba(196,98,45,0.4) !important; border-radius: 6px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
+  .leaflet-popup-tip { background: #1a1410 !important; }
+  .leaflet-popup-content { color: #f5f0e8 !important; font-family: 'DM Sans', sans-serif; margin: 10px 14px !important; }
+  .popup-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+  .popup-date { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #d4a843; margin-bottom: 4px; }
+  .popup-note { font-size: 0.78rem; color: rgba(245,240,232,0.6); line-height: 1.5; }
+
   .food-city-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
   .food-city-name { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-style: italic; white-space: nowrap; }
   .food-city-line { flex: 1; height: 1px; background: rgba(196,98,45,0.25); }
@@ -495,6 +512,7 @@
 <nav>
   <div class="nav-logo">Italia '25</div>
   <ul class="nav-links">
+    <li><a href="#map-section">Map</a></li>
     <li><a href="#flights">Flights</a></li>
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#food">Food</a></li>
@@ -502,6 +520,20 @@
     <li><a href="#tips">Tips</a></li>
   </ul>
 </nav>
+
+<!-- MAP -->
+<div id="map-section">
+  <div class="section-inner">
+    <div class="section-label">The Journey</div>
+    <h2 class="section-title">Your Route</h2>
+    <div id="trip-map"></div>
+    <div class="map-legend">
+      <div class="map-legend-item"><div class="legend-dot" style="background:#c4622d"></div> Key Stop</div>
+      <div class="map-legend-item"><div class="legend-dot" style="background:#d4a843; width:28px; height:3px; border-radius:2px;"></div> Route</div>
+      <div class="map-legend-item"><div class="legend-dot" style="background:#7ba7bc"></div> Flight</div>
+    </div>
+  </div>
+</div>
 
 <!-- FLIGHTS -->
 <section id="flights">
@@ -578,7 +610,7 @@
       <svg width="44" height="20" viewBox="0 0 44 20" fill="none">
         <path d="M2 10h40M32 3l10 7-10 7" stroke="#c4622d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <div class="flight-number">Booking ref: EQZYWP</div>
+      <div class="flight-number">JetBlue B632 · Ref: EQZYWP</div>
     </div>
     <div class="flight-right">
       <div class="flight-city">Boston</div>
@@ -586,15 +618,15 @@
       <div class="flight-time">Tue, Mar 24 · Evening</div>
     </div>
     <div class="flight-tracker-links">
-      <a class="tracker-btn tracker-btn-fa" href="https://flightaware.com/live/flight" target="_blank" rel="noopener">
+      <a class="tracker-btn tracker-btn-fa" href="https://flightaware.com/live/flight/JBU632" target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         FlightAware
       </a>
-      <a class="tracker-btn tracker-btn-gf" href="https://www.google.com/travel/flights/search?q=AMS+to+BOS+March+24+flight+status" target="_blank" rel="noopener">
+      <a class="tracker-btn tracker-btn-gf" href="https://www.google.com/travel/flights/search?q=JetBlue+B632+flight+status" target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Google Flights
       </a>
-      <span class="tracker-label">Ref: EQZYWP · AMS → BOS · Mar 24 — share your airline + flight # for a direct tracker link</span>
+      <span class="tracker-label">JetBlue B632 · AMS → BOS · Mar 24</span>
     </div>
   </div>
 </section>
@@ -1087,6 +1119,96 @@
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  // Trip stops in order
+  const stops = [
+    { name: "Boston", lat: 42.3601, lng: -71.0589, date: "Mar 15", note: "Departure — Delta 112, 6:40 PM", color: "#7ba7bc", isFlight: true },
+    { name: "Rome", lat: 41.9028, lng: 12.4964, date: "Mar 16–18", note: "Colosseum, Pantheon, Trastevere, incredible food", color: "#c4622d" },
+    { name: "Naples", lat: 40.8518, lng: 14.2681, date: "Mar 18–20", note: "Pizza pilgrimage, Spaccanapoli, underground city", color: "#c4622d" },
+    { name: "Pompeii", lat: 40.7462, lng: 14.4989, date: "Mar 19", note: "Ancient ruins — 40 min by Circumvesuviana train", color: "#d4a843" },
+    { name: "Positano", lat: 40.6281, lng: 14.4850, date: "Mar 20–23", note: "Amalfi Coast base — cliffside views, beach days, Capri day trips", color: "#c4622d" },
+    { name: "Capri", lat: 40.5507, lng: 14.2420, date: "Mar 21 (optional)", note: "Day trip by ferry — Blue Grotto, Anacapri, Monte Solaro", color: "#d4a843" },
+    { name: "Amsterdam", lat: 52.3676, lng: 4.9041, date: "Mar 24", note: "Layover — EJU4231 arrives 8:50 AM, connecting flight at 1:40 PM", color: "#7ba7bc", isFlight: true },
+    { name: "Boston", lat: 42.3601, lng: -71.1589, date: "Mar 24", note: "Home! Booking ref EQZYWP", color: "#7ba7bc", isFlight: true },
+  ];
+
+  // Italy-centered view
+  const map = L.map('trip-map', {
+    center: [43.5, 13.5],
+    zoom: 6,
+    zoomControl: true,
+    scrollWheelZoom: false
+  });
+
+  // Dark tile layer (CartoDB Dark Matter)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors © CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  // Draw route line through all stops
+  const routeCoords = stops.map(s => [s.lat, s.lng]);
+  L.polyline(routeCoords, {
+    color: '#d4a843',
+    weight: 2.5,
+    opacity: 0.7,
+    dashArray: '6, 8'
+  }).addTo(map);
+
+  // Custom circle markers
+  stops.forEach((stop, i) => {
+    const isMain = !stop.isFlight && stop.color === '#c4622d';
+    const radius = isMain ? 9 : 6;
+
+    const marker = L.circleMarker([stop.lat, stop.lng], {
+      radius: radius,
+      fillColor: stop.color,
+      color: stop.color === '#d4a843' ? '#1a1410' : 'rgba(245,240,232,0.3)',
+      weight: 1.5,
+      opacity: 1,
+      fillOpacity: stop.isFlight ? 0.5 : 0.9
+    }).addTo(map);
+
+    // Stop number label for main stops
+    if (!stop.isFlight) {
+      const label = L.divIcon({
+        html: `<div style="
+          background: ${stop.color};
+          color: #1a1410;
+          width: 18px; height: 18px;
+          border-radius: 50%;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          display: flex; align-items: center; justify-content: center;
+          border: 1.5px solid rgba(245,240,232,0.3);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        ">${i + 1}</div>`,
+        className: '',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+      L.marker([stop.lat, stop.lng], { icon: label }).addTo(map)
+        .bindPopup(`
+          <div class="popup-title">${stop.name}</div>
+          <div class="popup-date">${stop.date}</div>
+          <div class="popup-note">${stop.note}</div>
+        `, { maxWidth: 220 });
+    } else {
+      marker.bindPopup(`
+        <div class="popup-title">${stop.name}</div>
+        <div class="popup-date">${stop.date}</div>
+        <div class="popup-note">${stop.note}</div>
+      `, { maxWidth: 220 });
+    }
+  });
+
+  // Fit bounds to show the full Italy portion nicely on load
+  map.fitBounds([[38.0, 10.0], [52.5, 16.0]], { padding: [30, 30] });
 </script>
 </body>
 </html>
